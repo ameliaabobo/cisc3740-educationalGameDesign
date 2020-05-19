@@ -4,14 +4,14 @@ export default class christianityScene extends Phaser.Scene {
     private food: any;
     private leader: any;
     private money: any;
-    private place: any;
+    private places: any;
     private vehicle: any;
     private player: any;
     private cursorKeys: any;
     private spacebar: any;
     private score: any;
     private scoreLabel: any;
-    private collectibles: any;
+    //private collectibles: any;
 
     constructor() {
       super({ key: 'christianityScene' });
@@ -29,11 +29,11 @@ export default class christianityScene extends Phaser.Scene {
 
         this.book = this.add.image(100, 100, "christianityBook");
         this.book.setScale(0.1);
-        this.collectibles.add(this.book);
+        //this.collectibles.add(this.book);
 
         this.food = this.add.image(200, 200, "christianityFood");
         this.food.setScale(0.1);
-        this.collectibles.add(this.food);
+        //this.collectibles.add(this.food);
         
 
         this.leader = this.add.image(300, 300, "christianityLeader");
@@ -41,15 +41,26 @@ export default class christianityScene extends Phaser.Scene {
 
         this.money = this.add.image(400, 400, "christianityMoney");
         this.money.setScale(0.1);
-        this.collectibles.add(this.money);
+        //this.collectibles.add(this.money);
 
-        this.place = this.add.image(500, 500, "christianityPlace");
-        this.place.setScale(0.1);
+        this.places = this.physics.add.group();
+
+        var maxPlaces = 6;
+        for(var i=0; i <= maxPlaces; i++){
+          var xCoor = Phaser.Math.Between(0, 1000);
+          var yCoor = Phaser.Math.Between(0, 1000)
+          var place = this.add.image(xCoor, yCoor, "christianityPlace");
+          place.setScale(0.15);
+          
+        }
+
+
+
+        //this.place = this.add.image(500, 500, "christianityPlace");
+        //this.place.setScale(0.1);
 
         this.vehicle = this.add.image(600, 600, "christianityVehicle");
         this.vehicle.setScale(0.1);
-
-        
 
         this.physics.world.setBoundsCollision();
 
@@ -58,7 +69,7 @@ export default class christianityScene extends Phaser.Scene {
         this.cursorKeys = this.input.keyboard.createCursorKeys();
         this.player.setCollideWorldBounds(true);
 
-        
+
 
         //this.physics.add.overlap(this.player, this.money, this.pickMoney, null, this);
         //this.physics.add.overlap(this.player, this.food, this.pickFood, null, this);

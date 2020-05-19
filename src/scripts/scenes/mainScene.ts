@@ -12,7 +12,8 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    this.background = this.add.image(0, 0, "background");
+    this.background = this.add.image(500, 500, "background");
+    //this.background.setScale(0.75);
     //this.background.setScale(0.5);
     //this.background.setOrigin(0,0);
 
@@ -25,11 +26,12 @@ export default class MainScene extends Phaser.Scene {
     this.judaismButton=this.add.image(800,500,"judaismStamp").setInteractive().on('pointerdown', ()=>this.goToJudaism());
     this.judaismButton.setScale(0.6);
 
-
+    /*
     this.add.text(20, 20, "Playing game", {
       font: "25px Arial",
       fill: "yellow"
     });
+    */
 
   }
 
