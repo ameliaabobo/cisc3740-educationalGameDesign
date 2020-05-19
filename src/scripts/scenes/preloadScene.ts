@@ -48,10 +48,24 @@ export default class PreloadScene extends Phaser.Scene {
     //font
     this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
 
+    //player
+    this.load.spritesheet("player", "assets/spritesheets/player.png",{
+      frameWidth: 75,
+      frameHeight: 100
+    });
+
   }
 
   create() {
     this.add.text(20, 20, "Loading game...");
+
+    this.anims.create({
+      key: "thrust",
+      frames: this.anims.generateFrameNames("player"),
+      frameRate: 5,
+      repeat: -1
+    });
+
     this.scene.start('MainScene');
   }
 }
